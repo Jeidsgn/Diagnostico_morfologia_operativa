@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandOS - Diagnóstico</title>
+    <link rel="stylesheet" href="style.css?v=2">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="Questions.js?v=4"></script>
+    <script src="quadrants.js?v=4"></script>
+    <script src="descriptions.js?v=4"></script>
+    <script src="axes.js?v=4"></script>
+    <script src="app.js?v=4" defer></script>
+</head>
+
+<body>
+    <div id="game-container"></div>
+    <div id="flash"></div>
+    <div id="ui">
+        <!-- Patrón de fondo CSS que se mueve con la cámara -->
+        <div id="pattern-bg"></div>
+
+        <!-- Logo en la interfaz con opacidad -->
+        <img id="pdf-logo" src="images/Logo_blanco.svg"
+            style="position: absolute; top: 25px; right: 30px; width: 140px; opacity: 0.35; z-index: 100; pointer-events: none;" />
+        <!-- Imágenes para el PDF (invisibles pero renderizables en canvas) -->
+        <img id="pdf-grid" src="images/Grilla.svg"
+            style="position:absolute; left:-9999px; top:-9999px; width:800px; height:1132px; visibility:hidden; pointer-events:none;" />
+        <img id="pdf-pattern" src="images/Pattern.svg"
+            style="position:absolute; left:-9999px; top:-9999px; width:400px; height:524px; visibility:hidden; pointer-events:none;" />
+
+        <div class="header">
+            <h1>DIAGNÓSTICO DE MORFOLOGÍA OPERATIVA</h1>
+            <div class="status" id="st">SYSTEM: BOOTING...</div>
+        </div>
+        <div id="card">
+            <div class="q-label" id="ql">ANALYSIS</div>
+            <div class="q-text" id="qt">Scanning...</div>
+        </div>
+        <div id="options"></div>
+        <button id="btn-reveal">VER RESULTADO</button>
+        <button id="btn-dl">DOWNLOAD FULL REPORT</button>
+    </div>
+</body>
+
+</html>
