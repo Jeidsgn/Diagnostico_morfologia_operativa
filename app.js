@@ -267,52 +267,43 @@ document.getElementById('btn-dl').onclick = () => {
     doc.line(210, 0, 0, 297); // Arriba Derecha a Abajo Izquierda
 
     // --- Textos ---
-    doc.setTextColor(130, 23, 206); doc.setFontSize(26); doc.text("PERFIL OPERATIVO", 20, 30);
-    doc.setTextColor(21, 128, 139); doc.setFontSize(18); doc.text(`Cuadrante: ${r.name}`, 20, 45);
+    doc.setTextColor(130, 23, 206); doc.setFontSize(26); doc.text("FORMA OPERATIVA", colW, rowH);
+    doc.setTextColor(21, 128, 139); doc.setFontSize(18); doc.text(`Perfil: ${r.name}`, colW, 45);
 
     let currentY = 55;
 
     doc.setTextColor(200, 200, 200); doc.setFontSize(11);
-    let descLines = doc.splitTextToSize(stripHTML(r.desc || ''), 170);
-    doc.text(descLines, 20, currentY);
+    let descLines = doc.splitTextToSize(stripHTML(r.desc || ''), 175);
+    doc.text(descLines, colW, currentY);
     currentY += (descLines.length * 6) + 10;
 
     doc.setTextColor(255, 255, 255); doc.setFontSize(14);
-    doc.text(`${axesData.x.name}`, 22, currentY);
-    doc.text(` ${axesData.x.measure} - ${r.pX}%`, 20, currentY + 8);
+    doc.text(`${axesData.x.name}`, colW, currentY);
+    doc.text(`${axesData.x.measure} - ${r.pX}%`, colW, currentY + 8);
     currentY += 20;
 
     doc.setTextColor(180, 180, 180); doc.setFontSize(11);
-    let descXLines = doc.splitTextToSize(stripHTML(r.descX), 170);
-    doc.text(descXLines, 20, currentY);
+    let descXLines = doc.splitTextToSize(stripHTML(r.descX), 175);
+    doc.text(descXLines, colW, currentY);
     currentY += (descXLines.length * 6) + 10;
 
     doc.setTextColor(255, 255, 255); doc.setFontSize(14);
-    doc.text(`${axesData.y.name}`, 22, currentY);
-    doc.text(` ${axesData.y.measure} - ${r.pY}%`, 20, currentY + 8);
+    doc.text(`${axesData.y.name}`, colW, currentY);
+    doc.text(`${axesData.y.measure} - ${r.pY}%`, colW, currentY + 8);
     currentY += 20;
 
     doc.setTextColor(180, 180, 180); doc.setFontSize(11);
-    let descYLines = doc.splitTextToSize(stripHTML(r.descY), 170);
-    doc.text(descYLines, 20, currentY);
+    let descYLines = doc.splitTextToSize(stripHTML(r.descY), 175);
+    doc.text(descYLines, colW, currentY);
 
     // --- Pie de página ---
-    const footerY = 282;
+    const footerY = 272.25;
     doc.setDrawColor(130, 23, 206);
     doc.setLineWidth(0.5);
-    doc.line(20, footerY - 6, 190, footerY - 6);
+    doc.line(colW, footerY, 192.5, footerY);
 
-    try {
-        const logoImg = document.getElementById('pdf-logo');
-        const c = document.createElement('canvas');
-        c.width = logoImg.width || 140; c.height = logoImg.height || 50;
-        c.getContext('2d').drawImage(logoImg, 0, 0, c.width, c.height);
-        doc.addImage(c.toDataURL('image/png'), 'PNG', 20, footerY - 2, 28, 10);
-    } catch (e) {
-        // Ignorar si hay restricción de file://
-    }
 
-    doc.setTextColor(130, 23, 206); doc.setFontSize(9);
+    doc.setTextColor(130, 23, 206); doc.setFontSize(18);
     doc.text('linktr.ee/jeidsgn', 140, footerY + 5);
 
     doc.save("Perfil_Operativo_Jei.pdf");
