@@ -1,49 +1,49 @@
 const questionsData = [
     {
         "id": 1, "axis": "x", "label": "Forma", "text": "Los últimos entregables…", "options": [
-            { "value": 4, "text": "Son muy similares entre sí" },
-            { "value": 3, "text": "Comparten una base común, con algunas variaciones" },
-            { "value": 2, "text": "Tienen muchas diferencias, pero con algunos patrones" },
-            { "value": 1, "text": "Son muy diferentes entre sí" }
+            { "value": 4, "text": "Son muy similares" },
+            { "value": 3, "text": "Tienen una base común con variaciones" },
+            { "value": 2, "text": "Son diferentes con algunos patrones" },
+            { "value": 1, "text": "Son muy diferentes" }
         ]
     },
     {
         "id": 2, "axis": "y", "label": "Referencia", "text": "Cuando alguien del equipo no sabe cómo proceder…", "options": [
             { "value": 4, "text": "Busca en la documentación o procesos existentes" },
-            { "value": 3, "text": "Pregunta a alguien con experiencia en ese tipo de casos" },
-            { "value": 2, "text": "Decide según su criterio y luego se ajusta si es necesario" },
+            { "value": 3, "text": "Pregunta a alguien con experiencia" },
+            { "value": 2, "text": "Decide según su criterio y se ajusta si es necesario" },
             { "value": 1, "text": "Se escala a una decisión central antes de avanzar" }
         ]
     },
     {
         "id": 3, "axis": "x", "label": "Estructura", "text": "El trabajo que realiza el equipo se puede describir como…", "options": [
-            { "value": 4, "text": "Secuencias claras que se repiten con pocas variaciones" },
-            { "value": 3, "text": "Procesos conocidos con ajustes frecuentes" },
+            { "value": 4, "text": "Secuencias repetibles" },
+            { "value": 3, "text": "Procesos conocidos con ajustes" },
             { "value": 2, "text": "Mezcla de tareas repetibles y encargos únicos" },
-            { "value": 1, "text": "Resolución de situaciones nuevas cada vez" }
+            { "value": 1, "text": "Situaciones nuevas cada vez" }
         ]
     },
     {
         "id": 4, "axis": "y", "label": "Criterio", "text": "Las decisiones sobre cómo hacer el trabajo suelen…", "options": [
-            { "value": 4, "text": "Seguir procesos o protocolos ya establecidos" },
-            { "value": 3, "text": "Basarse en la experiencia de cada persona" },
-            { "value": 2, "text": "Requerir aprobación de una figura central" },
-            { "value": 1, "text": "Definirse caso por caso en cada situación" }
+            { "value": 4, "text": "Seguir procesos establecidos" },
+            { "value": 3, "text": "Basarse en la experiencia individual" },
+            { "value": 2, "text": "Requerir aprobación central" },
+            { "value": 1, "text": "Definirse caso por caso" }
         ]
     },
     {
         "id": 5, "axis": "x", "label": "Previsibilidad", "text": "El tipo de trabajo del próximo mes…", "options": [
-            { "value": 4, "text": "Es bastante predecible en forma y volumen" },
-            { "value": 3, "text": "Se puede estimar en general, con variaciones" },
-            { "value": 2, "text": "Es previsible solo en algunas partes" },
-            { "value": 1, "text": "Depende casi totalmente de lo que llegue" }
+            { "value": 4, "text": "Es predecible" },
+            { "value": 3, "text": "Se puede estimar con variaciones" },
+            { "value": 2, "text": "Es previsible en algunas partes" },
+            { "value": 1, "text": "Depende de lo que llegue" }
         ]
     },
     {
         "id": 6, "axis": "y", "label": "Delegación", "text": "Una tarea crítica hoy…", "options": [
-            { "value": 4, "text": "Puede ejecutarse siguiendo un sistema existente" },
-            { "value": 3, "text": "Requiere acompañamiento inicial, pero luego fluye" },
-            { "value": 2, "text": "Depende bastante de a quién se le asigne" },
+            { "value": 4, "text": "Se ejecuta con el sistema existente" },
+            { "value": 3, "text": "Requiere acompañamiento inicial y luego fluye" },
+            { "value": 2, "text": "Depende de a quién se le asigne" },
             { "value": 1, "text": "Necesita supervisión constante o intervención directa" }
         ]
     }
