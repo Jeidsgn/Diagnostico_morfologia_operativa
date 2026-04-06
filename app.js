@@ -302,9 +302,18 @@ document.getElementById('btn-dl').onclick = () => {
     doc.setLineWidth(0.5);
     doc.line(colW, footerY, 192.5, footerY);
 
+    try {
+        const logoImg = document.getElementById('pdf-logo');
+        const c = document.createElement('canvas');
+        c.width = logoImg.width || 140; c.height = logoImg.height || 50;
+        c.getContext('2d').drawImage(logoImg, 0, 0, c.width, c.height);
+        doc.addImage(c.toDataURL('image/png'), 'PNG', 20, footerY - 2, 28, 10);
+    } catch (e) {
+        // Ignorar si hay restricción de file://
+    }
 
     doc.setTextColor(130, 23, 206); doc.setFontSize(18);
     doc.text('linktr.ee/jeidsgn', 140, footerY + 5);
 
-    doc.save("Perfil_Operativo_Jei.pdf");
+    doc.save("Forma_Operativa_Jei.pdf");
 };

@@ -4,7 +4,7 @@ const questionsData = [
             { "value": 4, "text": "Son muy similares" },
             { "value": 3, "text": "Tienen una base común con variaciones" },
             { "value": 2, "text": "Son diferentes con algunos patrones" },
-            { "value": 1, "text": "Son muy diferentes" }
+            { "value": 1, "text": "Son totalmente diferentes" }
         ]
     },
     {
@@ -35,13 +35,13 @@ const questionsData = [
         "id": 5, "axis": "x", "label": "Previsibilidad", "text": "El tipo de trabajo del próximo mes…", "options": [
             { "value": 4, "text": "Es predecible" },
             { "value": 3, "text": "Se puede estimar con variaciones" },
-            { "value": 2, "text": "Es previsible en algunas partes" },
+            { "value": 2, "text": "Es difícil de predecir, pero se puede aproximar" },
             { "value": 1, "text": "Depende de lo que llegue" }
         ]
     },
     {
         "id": 6, "axis": "y", "label": "Delegación", "text": "Una tarea crítica hoy…", "options": [
-            { "value": 4, "text": "Se ejecuta con el sistema existente" },
+            { "value": 4, "text": "Se ejecuta con el protocolo existente" },
             { "value": 3, "text": "Requiere acompañamiento inicial y luego fluye" },
             { "value": 2, "text": "Depende de a quién se le asigne" },
             { "value": 1, "text": "Necesita supervisión constante o intervención directa" }
