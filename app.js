@@ -307,7 +307,7 @@ document.getElementById('btn-dl').onclick = () => {
         const c = document.createElement('canvas');
         c.width = logoImg.width || 140; c.height = logoImg.height || 50;
         c.getContext('2d').drawImage(logoImg, 0, 0, c.width, c.height);
-        doc.addImage(c.toDataURL('image/png'), 'PNG', 20, footerY - 2, 28, 28);
+        doc.addImage(c.toDataURL('image/png'), 'PNG', 20, footerY - 2, 28, 23);
     } catch (e) {
         // Ignorar si hay restricción de file://
     }
