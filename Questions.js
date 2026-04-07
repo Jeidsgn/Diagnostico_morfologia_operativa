@@ -1,6 +1,6 @@
 const questionsData = [
     {
-        "id": 1, "axis": "x", "label": "Forma", "text": "Los últimos entregables…", "options": [
+        "id": 1, "axis": "x", "label": "Forma", "text": "Los últimos proyectos…", "options": [
             { "value": 4, "text": "Son muy similares" },
             { "value": 3, "text": "Tienen una base común con variaciones" },
             { "value": 2, "text": "Son diferentes con algunos patrones" },
@@ -40,7 +40,7 @@ const questionsData = [
         ]
     },
     {
-        "id": 6, "axis": "y", "label": "Delegación", "text": "Una tarea crítica hoy…", "options": [
+        "id": 6, "axis": "y", "label": "Delegación", "text": "Una tarea CRÍTICA hoy…", "options": [
             { "value": 4, "text": "Se ejecuta con el protocolo existente" },
             { "value": 3, "text": "Requiere acompañamiento inicial y luego fluye" },
             { "value": 2, "text": "Depende de a quién se le asigne" },
