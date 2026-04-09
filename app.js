@@ -95,12 +95,28 @@ class AuditScene extends Phaser.Scene {
 
     showWelcome() {
         document.getElementById('st').innerText = 'SYSTEM: READY';
-        document.getElementById('ql').innerText = 'SISTEMA LISTO';
+        document.getElementById('ql').innerText = welcomeQuestionsData.title;
+
+        const selectsHtml = welcomeQuestionsData.questions.map(q => {
+            const optionsHtml = q.options.map(opt => `<option value="${opt.value}">${opt.text}</option>`).join('');
+            return `
+            <label style="color: var(--teal); font-weight: bold; display:block; margin-bottom: 8px; letter-spacing: 1px;">${q.label}</label>
+            <select id="${q.id}" style="width: 100%; padding: 12px; margin-bottom: 20px; background: rgba(5,5,15,0.9); color: white; border: 1px solid var(--purple); outline: none; font-family: 'Segoe UI', sans-serif; cursor: pointer;">
+                <option value="" disabled selected>Selecciona una opción...</option>
+                ${optionsHtml}
+            </select>
+            `;
+        }).join('');
+
         document.getElementById('qt').innerHTML = `
-            Diagnóstico de Morfología Operativa<br><br>
-            <span style="font-size: 1rem; color: #bbb; line-height: 1.4; display: block; max-width: 90%; margin: 0 auto; white-space: normal;">
-                Bienvenido al sistema. Por favor, selecciona una opción para cada pregunta que defina mejor tu forma operativa en la organización.
+            Diagnóstico de Morfología Operativa<br>
+            <span style="font-size: 0.95rem; color: #bbb; line-height: 1.4; display: block; max-width: 90%; margin: 10px auto 0; white-space: normal;">
+                ${welcomeQuestionsData.text}
             </span>
+            <div style="margin-top: 25px; text-align: left; font-size: 0.9rem;">
+                ${selectsHtml}
+                <div id="welcome-error" style="color: #ff4444; font-size: 0.85rem; margin-top: -5px; margin-bottom: 15px; text-align: center; display: none;">Por favor selecciona una opción en todas las preguntas para poder avanzar.</div>
+            </div>
         `;
         document.getElementById('card').style.display = 'block';
 
@@ -108,6 +124,23 @@ class AuditScene extends Phaser.Scene {
         btnStart.style.display = 'block';
 
         btnStart.onclick = () => {
+            let allValid = true;
+            window.userInfo = {};
+            welcomeQuestionsData.questions.forEach(q => {
+                const val = document.getElementById(q.id).value;
+                if (!val) allValid = false;
+                window.userInfo[q.id] = val;
+            });
+
+            if (!allValid) {
+                document.getElementById('welcome-error').style.display = 'block';
+                return;
+            }
+
+            // Mapeamos para mantener compatibilidad con el resto del código PDF
+            window.userInfo.orgSize = window.userInfo["user-org-size"];
+            window.userInfo.industry = window.userInfo["user-industry"];
+
             btnStart.style.display = 'none';
             document.getElementById('card').style.display = 'none';
             this.next();
@@ -290,6 +323,15 @@ document.getElementById('btn-dl').onclick = () => {
     // --- Textos ---
     doc.setTextColor(130, 23, 206); doc.setFontSize(26); doc.text("FORMA OPERATIVA", colW, rowH);
     doc.setTextColor(21, 128, 139); doc.setFontSize(18); doc.text(`Perfil: ${r.name}`, colW, 45);
+
+    if (window.userInfo) {
+        doc.setFontSize(10);
+        doc.setTextColor(150, 150, 150);
+        let infoStr = [];
+        if (window.userInfo.industry !== 'Prefiero no responder') infoStr.push(`Industria: ${window.userInfo.industry}`);
+        if (window.userInfo.orgSize !== 'Prefiero no responder') infoStr.push(`Tamaño: ${window.userInfo.orgSize}`);
+        if (infoStr.length > 0) doc.text(infoStr.join('  |  '), colW, 51);
+    }
 
     let currentY = 55;
 

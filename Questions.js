@@ -1,6 +1,6 @@
 const questionsData = [
     {
-        "id": 1, "axis": "x", "label": "Forma", "text": "Los últimos proyectos…", "options": [
+        "id": 1, "axis": "x", "label": "Forma", "text": "Las últimas tareas…", "options": [
             { "value": 4, "text": "Son muy similares" },
             { "value": 3, "text": "Tienen una base común con variaciones" },
             { "value": 2, "text": "Son diferentes con algunos patrones" },
@@ -8,7 +8,7 @@ const questionsData = [
         ]
     },
     {
-        "id": 2, "axis": "y", "label": "Referencia", "text": "Cuando alguien del equipo no sabe cómo proceder…", "options": [
+        "id": 2, "axis": "y", "label": "Referencia", "text": "Cuando alguien no sabe cómo proceder…", "options": [
             { "value": 4, "text": "Busca en la documentación o procesos existentes" },
             { "value": 3, "text": "Pregunta a alguien con experiencia" },
             { "value": 2, "text": "Decide según su criterio y se ajusta si es necesario" },
@@ -48,3 +48,38 @@ const questionsData = [
         ]
     }
 ];
+
+const welcomeQuestionsData = {
+    title: "INFORMACIÓN INICIAL",
+    text: "Para personalizar tu experiencia, necesitamos conocer un par de detalles informativos antes de empezar.",
+    questions: [
+        {
+            id: "user-org-size",
+            label: "TAMAÑO DE LA ORGANIZACIÓN",
+            options: [
+                { value: "Micro (1-10)", text: "Micro (1-10 empleados)" },
+                { value: "Pequeña (11-50)", text: "Pequeña (11-50 empleados)" },
+                { value: "Mediana (51-250)", text: "Mediana (51-250 empleados)" },
+                { value: "Grande (251-1000)", text: "Grande (251-1000 empleados)" },
+                { value: "Corporativo (+1000)", text: "Corporativo (+1000 empleados)" },
+                { value: "Prefiero no responder", text: "Prefiero no responder" }
+            ]
+        },
+        {
+            id: "user-industry",
+            label: "INDUSTRIA",
+            options: [
+                { value: "Tecnología / Software", text: "Tecnología / Software" },
+                { value: "Comercio / Retail", text: "Comercio / Retail" },
+                { value: "Manufactura / Industria", text: "Manufactura / Industria" },
+                { value: "Servicios Profesionales", text: "Servicios Profesionales / Agencia" },
+                { value: "Salud / Médico", text: "Salud / Médico" },
+                { value: "Educación", text: "Educación" },
+                { value: "Finanzas / Seguros", text: "Finanzas / Seguros" },
+                { value: "Entretenimiento / Medios", text: "Entretenimiento / Medios" },
+                { value: "Otra", text: "Otra" },
+                { value: "Prefiero no responder", text: "Prefiero no responder" }
+            ]
+        }
+    ]
+};
