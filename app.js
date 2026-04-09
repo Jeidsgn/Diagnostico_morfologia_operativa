@@ -309,17 +309,14 @@ document.getElementById('btn-dl').onclick = async () => {
         const scriptURL = 'https://script.google.com/macros/s/AKfycbze3dHJwHpyhJhAJfBMhE6GlWLUMyNiGCuW3QKswHGKqRXPFanfkMV9moPCr_q_M-O1/exec'; // <--- Pegarás tu URL aquí
 
         if (scriptURL && scriptURL.startsWith('http')) {
-            const params = new URLSearchParams();
-            params.append('orgSize', window.userInfo?.orgSize || 'N/A');
-            params.append('industry', window.userInfo?.industry || 'N/A');
-            params.append('scoreX', r.x);
-            params.append('scoreY', r.y);
-            params.append('percentX', r.pX);
-            params.append('percentY', r.pY);
-            params.append('quadrant', r.name);
-            
-            // Enviamos con mode 'no-cors' para evitar bloqueos del navegador
-            await fetch(scriptURL, { method: 'POST', body: params, mode: 'no-cors' });
+            const formData = new FormData();
+            formData.append('orgSize', window.userInfo?.orgSize || 'N/A');
+            formData.append('industry', window.userInfo?.industry || 'N/A');
+            formData.append('scoreX', r.x);
+            formData.append('scoreY', r.y);
+            formData.append('quadrant', r.name);
+
+            await fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' });
         }
     } catch (e) {
         console.error("No se pudo conectar con Sheets", e);
