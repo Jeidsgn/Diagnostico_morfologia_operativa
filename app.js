@@ -51,7 +51,7 @@ class AuditScene extends Phaser.Scene {
         this.cameras.main.centerOn(0, 0);
         this.drawGrid();
         this.drawNode(0, 0, true);
-        this.time.delayedCall(800, () => this.next());
+        this.time.delayedCall(800, () => this.showWelcome());
     }
 
     drawQuadrants() {
@@ -91,6 +91,27 @@ class AuditScene extends Phaser.Scene {
         this.gfx.lineStyle(4, active ? COLORS.purple : COLORS.blue, 1).fillStyle(COLORS.bg, 1);
         this.gfx.strokeCircle(px, py, 16).fillCircle(px, py, 16);
         if (active) this.gfx.fillStyle(COLORS.purple, 1).fillCircle(px, py, 8);
+    }
+
+    showWelcome() {
+        document.getElementById('st').innerText = 'SYSTEM: READY';
+        document.getElementById('ql').innerText = 'SISTEMA LISTO';
+        document.getElementById('qt').innerHTML = `
+            Diagnóstico de Morfología Operativa<br><br>
+            <span style="font-size: 1rem; color: #bbb; line-height: 1.4; display: block; max-width: 90%; margin: 0 auto; white-space: normal;">
+                Bienvenido al sistema. Por favor, selecciona una opción para cada pregunta que defina mejor tu forma operativa en la organización.
+            </span>
+        `;
+        document.getElementById('card').style.display = 'block';
+
+        const btnStart = document.getElementById('btn-start');
+        btnStart.style.display = 'block';
+
+        btnStart.onclick = () => {
+            btnStart.style.display = 'none';
+            document.getElementById('card').style.display = 'none';
+            this.next();
+        };
     }
 
     next() {

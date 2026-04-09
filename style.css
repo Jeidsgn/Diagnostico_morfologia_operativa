@@ -176,7 +176,8 @@ h1 {
     }
 }
 
-#btn-reveal {
+#btn-reveal,
+#btn-start {
     position: absolute;
     bottom: 40px;
     left: 50%;
@@ -194,7 +195,8 @@ h1 {
     z-index: 200;
 }
 
-#btn-reveal:hover {
+#btn-reveal:hover,
+#btn-start:hover {
     background: var(--blue);
 }
 
@@ -277,6 +279,7 @@ h1 {
     }
 
     #btn-reveal,
+    #btn-start,
     #btn-dl {
         width: 90%;
         padding: 15px 0;
