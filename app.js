@@ -295,8 +295,37 @@ class AuditScene extends Phaser.Scene {
 
 if (document.readyState === 'complete') boot(); else window.addEventListener('load', boot);
 
-document.getElementById('btn-dl').onclick = () => {
+document.getElementById('btn-dl').onclick = async () => {
+    const btn = document.getElementById('btn-dl');
+    const originalText = btn.innerText;
+    btn.innerText = "GUARDANDO RESULTADOS...";
+    btn.style.pointerEvents = "none";
+    btn.style.opacity = "0.7";
+
     const r = window.result;
+
+    // --- 1. Enviar datos a Google Sheets ---
+    try {
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbze3dHJwHpyhJhAJfBMhE6GlWLUMyNiGCuW3QKswHGKqRXPFanfkMV9moPCr_q_M-O1/exec'; // <--- Pegarás tu URL aquí
+
+        if (scriptURL !== 'https://script.google.com/macros/s/AKfycbze3dHJwHpyhJhAJfBMhE6GlWLUMyNiGCuW3QKswHGKqRXPFanfkMV9moPCr_q_M-O1/exec') {
+            const formData = new FormData();
+            formData.append('orgSize', window.userInfo?.orgSize || 'N/A');
+            formData.append('industry', window.userInfo?.industry || 'N/A');
+            formData.append('scoreX', r.x);
+            formData.append('scoreY', r.y);
+            formData.append('quadrant', r.name);
+
+            // Usamos 'no-cors' para evitar problemas estrictos de navegador al enviar a google.
+            await fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' });
+        }
+    } catch (e) {
+        console.error("No se pudo conectar con Sheets", e);
+    }
+
+    // --- 2. Generación del reporte en PDF ---
+    btn.innerText = "DESCARGANDO PDF...";
+
     const doc = new window.jspdf.jsPDF();
     const stripHTML = (str) => str.replace(/<[^>]*>?/gm, '');
 
@@ -379,4 +408,9 @@ document.getElementById('btn-dl').onclick = () => {
     doc.text('linktr.ee/jeidsgn', 140, footerY + 5);
 
     doc.save("Forma_Operativa_Jei.pdf");
+
+    // --- 3. Restaurar botón ---
+    btn.innerText = originalText;
+    btn.style.pointerEvents = "auto";
+    btn.style.opacity = "1";
 };
